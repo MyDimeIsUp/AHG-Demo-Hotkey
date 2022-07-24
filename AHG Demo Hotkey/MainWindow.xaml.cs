@@ -12,7 +12,7 @@ namespace AHG_Demo_Hotkey {
         DemoInput DemoHelper = new DemoInput();
         SteamHelper SteamHelper = new SteamHelper();
 
-        Key curKey;
+        Key curKey; // Currently selected key
 
         public MainWindow() {
             InitializeComponent();
@@ -28,7 +28,12 @@ namespace AHG_Demo_Hotkey {
             GlobalKeyHook.KeyDown += new KeyEventHandler(GlobalHotKey_KeyDown);
         }
 
-        private void HotkeyInput_KeyDown(object sender, KeyEventArgs e) //show the key in the textbox for user
+        /// <summary>
+        /// Sets selected key and updates text box but does not save to program's properties
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HotkeyInput_KeyDown(object sender, KeyEventArgs e)
         {
             HotkeyInput.Text = e.Key.ToString();
             curKey = (e.Key);
@@ -48,6 +53,11 @@ namespace AHG_Demo_Hotkey {
             DemoHelper.SimulateConsoleInput(e, SteamHelper);
         }
 
+        /// <summary>
+        /// Used for showing and hiding tray icon. Run when WindowState is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_StateChanged(object sender, EventArgs e) {
             if (this.WindowState == WindowState.Minimized) {
                 this.Hide();

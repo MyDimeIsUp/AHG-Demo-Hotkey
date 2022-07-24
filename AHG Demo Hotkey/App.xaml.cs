@@ -14,29 +14,13 @@ namespace AHG_Demo_Hotkey {
         protected override void OnStartup(StartupEventArgs e) {
             base.OnStartup(e);
 
-            //create the notifyicon (it's a resource declared in NotifyIconResources.xaml
+            // Create tray icon
             TrayIcon = (TaskbarIcon)FindResource("NotifyIcon");
         }
 
         protected override void OnExit(ExitEventArgs e) {
-            TrayIcon.Dispose(); //the icon would clean up automatically, but this is cleaner
+            TrayIcon.Dispose(); // Be sure TrayIcon is removed
             base.OnExit(e);
         }
-    }
-
-    /// <summary>
-    /// A simple command that displays the command parameter as
-    /// a dialog message.
-    /// </summary>
-    public class ShowMessageCommand : ICommand {
-        public void Execute(object parameter) {
-            MessageBox.Show(parameter.ToString());
-        }
-
-        public bool CanExecute(object parameter) {
-            return true;
-        }
-
-        public event EventHandler CanExecuteChanged;
     }
 }
