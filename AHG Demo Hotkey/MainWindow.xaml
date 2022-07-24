@@ -1,0 +1,67 @@
+﻿<Window x:Class="AHG_Demo_Hotkey.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
+        xmlns:local="clr-namespace:AHG_Demo_Hotkey"
+        mc:Ignorable="d"
+        Title="Hotkey Settings" Height="300" Width="350"
+        ResizeMode="CanMinimize"
+        Background="#303030"
+        StateChanged="Window_StateChanged">
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <TextBlock
+            Margin="25,0"
+            FontSize="25"
+            Foreground="White"
+            VerticalAlignment="Center">
+            AHG Demo Hotkey
+            </TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <TextBlock
+                Margin="25,0,25,0"
+                FontSize="15"
+                Foreground="White"
+                TextWrapping="Wrap" Grid.ColumnSpan="2">
+            To set a hotkey, press the box with your current key and press the key you want, then hit save.
+            
+            To use, press the selected hotkey from the console while in GMod. It will send a record command with the current date and time.
+            </TextBlock>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="75*"/>
+                    <ColumnDefinition Width="25*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox
+                    Name="HotkeyInput"
+                    Margin="25,0,0,10"
+                    TextWrapping="NoWrap"
+                    AcceptsReturn="False"
+                    Height="22" Grid.Column="0" KeyDown="HotkeyInput_KeyDown"/>
+
+                <Button
+                    Name="SaveBtn"
+                    Grid.Column="1"
+                    Margin="25,0,25,10"
+                    Height="22" Click="SaveBtn_Click">Save</Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
