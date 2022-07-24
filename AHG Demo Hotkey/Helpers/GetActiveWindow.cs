@@ -1,41 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Runtime.InteropServices;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Text;
 
-namespace AHG_Demo_Hotkey.Helpers {
-    class GetActiveWindow {
-        [DllImport("user32.dll")]
-        static extern IntPtr GetForegroundWindow();
-        [DllImport("user32.dll")]
-        public static extern IntPtr GetWindowThreadProcessId(IntPtr hWnd, out uint ProcessId);
-        [DllImport("user32.dll")]
-        static extern int GetWindowText(int hWnd, StringBuilder text, int count);
+namespace AHG_Demo_Hotkey;
 
-        public string GetWindowTitle() {
+class GetActiveWindow {
+    [DllImport("user32.dll")]
+    static extern IntPtr GetForegroundWindow();
+    [DllImport("user32.dll")]
+    public static extern IntPtr GetWindowThreadProcessId(IntPtr hWnd, out uint ProcessId);
+    [DllImport("user32.dll")]
+    static extern int GetWindowText(int hWnd, StringBuilder text, int count);
 
-            const int nChars = 256;
-            IntPtr handle = (IntPtr)0;
-            StringBuilder Buff = new StringBuilder(nChars);
+    public string GetWindowTitle() {
 
-            handle = GetForegroundWindow();
+        const int nChars = 256;
+        IntPtr handle = (IntPtr)0;
+        StringBuilder Buff = new StringBuilder(nChars);
 
-            if (GetWindowText((int)handle, Buff, nChars) > 0) {
-                return Buff.ToString();
-                //return handle.ToString();
-            } else {
-                return "";
-            }
+        handle = GetForegroundWindow();
 
+        if (GetWindowText((int)handle, Buff, nChars) > 0) {
+            return Buff.ToString();
+            //return handle.ToString();
+        } else {
+            return "";
         }
-        public string GetProcessName() {
-            IntPtr hwnd = GetForegroundWindow();
-            uint pid;
-            GetWindowThreadProcessId(hwnd, out pid);
-            Process p = Process.GetProcessById((int)pid);
-            return p.ProcessName.ToString();
-        }
+
+    }
+    public string GetProcessName() {
+        IntPtr hwnd = GetForegroundWindow();
+        uint pid;
+        GetWindowThreadProcessId(hwnd, out pid);
+        Process p = Process.GetProcessById((int)pid);
+        return p.ProcessName.ToString();
     }
 }

@@ -5,6 +5,8 @@ using System.Text.RegularExpressions;
 using System.Windows;
 
 namespace AHG_Demo_Hotkey.Helpers;
+
+
 public class SteamHelper {
     /// <summary>
     /// Gets the file path to Garry's Mod folder

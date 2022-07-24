@@ -5,6 +5,7 @@ using System.IO;
 using WindowsInput;
 
 namespace AHG_Demo_Hotkey.Helpers;
+
 public class DemoInput {
     GetActiveWindow ActiveWindowHelper = new GetActiveWindow();
     public void SimulateConsoleInput(KeyEventArgs e, SteamHelper SteamHelper) {
