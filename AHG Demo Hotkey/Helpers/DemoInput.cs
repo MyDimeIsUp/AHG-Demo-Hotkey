@@ -16,27 +16,11 @@ public class DemoInput {
             DateTime DateTime = DateTime.Now;
             string AHGDemosPath = Path.Combine(GModPath, "demos", "AHG");
 
-            // If our AHG dir doesn't exist, create it
-            if (!Directory.Exists(AHGDemosPath)) {
-                Directory.CreateDirectory(AHGDemosPath);
-            }
-
-            // Now check if our month, date, and hour directory exist. God forgive me for this
-            if (!Directory.Exists(Path.Combine(AHGDemosPath, DateTime.Year.ToString()))) {
-                Directory.CreateDirectory(Path.Combine(AHGDemosPath, DateTime.Year.ToString()));
-            }
-
-            if (!Directory.Exists(Path.Combine(AHGDemosPath, DateTime.Year.ToString(), DateTime.ToString("MMMM")))) {
-                Directory.CreateDirectory(Path.Combine(AHGDemosPath, DateTime.Year.ToString(), DateTime.ToString("MMMM")));
-            }
-
-            if (!Directory.Exists(Path.Combine(AHGDemosPath, DateTime.Year.ToString(), DateTime.ToString("MMMM"), DateTime.Day.ToString()))) {
-                Directory.CreateDirectory(Path.Combine(AHGDemosPath, DateTime.Year.ToString(), DateTime.ToString("MMMM"), DateTime.Day.ToString()));
-            }
-
-            if (!Directory.Exists(Path.Combine(AHGDemosPath, DateTime.Year.ToString(), DateTime.ToString("MMMM"), DateTime.Day.ToString(), DateTime.Hour.ToString()))) {
-                Directory.CreateDirectory(Path.Combine(AHGDemosPath, DateTime.Year.ToString(), DateTime.ToString("MMMM"), DateTime.Day.ToString(), DateTime.Hour.ToString()));
-            }
+            Directory.CreateDirectory(AHGDemosPath);
+            Directory.CreateDirectory(Path.Combine(AHGDemosPath, DateTime.Year.ToString()));
+            Directory.CreateDirectory(Path.Combine(AHGDemosPath, DateTime.Year.ToString(), DateTime.ToString("MMMM")));
+            Directory.CreateDirectory(Path.Combine(AHGDemosPath, DateTime.Year.ToString(), DateTime.ToString("MMMM"), DateTime.Day.ToString()));
+            Directory.CreateDirectory(Path.Combine(AHGDemosPath, DateTime.Year.ToString(), DateTime.ToString("MMMM"), DateTime.Day.ToString(), DateTime.Hour.ToString()));
 
             string DemoPath = Path.Combine("demos", "AHG", DateTime.Year.ToString(), DateTime.ToString("MMMM"), DateTime.Day.ToString(), DateTime.Hour.ToString()).Replace("\\", "/");
 
